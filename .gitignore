@@ -2,6 +2,10 @@
 *.db
 *.sqlite3
 
+# Jupyter stuff
+notebooks/.jupyter
+notebooks/.local
+
 ### ------------
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,test,linux,macos,windows,visualstudiocode,python
