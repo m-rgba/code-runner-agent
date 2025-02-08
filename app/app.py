@@ -74,7 +74,7 @@ async def create_container(thread_id: str, docker_client):
 
         # Create container
         container = docker_client.containers.run(
-            image="python:3.12",
+            image="code-runner-client",
             name=container_name,
             shm_size="512mb",
             restart_policy={"Name": "unless-stopped"},
