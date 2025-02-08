@@ -1,0 +1,32 @@
+services:
+  wandb_jupyter:
+    build:
+      context: .
+      dockerfile: notebook.Dockerfile
+    container_name: wandb_notebook
+    ports:
+      - "127.0.0.1:8888:8888"
+    env_file:
+      - .env
+    environment:
+      - NB_UID=1000
+      - NB_GID=100
+      - NB_UMASK=002
+      - CHOWN_HOME=yes
+      - GRANT_SUDO=yes
+      - DOCKER_GID=999
+      - JUPYTER_ENABLE_LAB=yes
+      - DOCKER_SOCKET_GID=999
+    privileged: true
+    shm_size: '512m'
+    restart: always
+    user: jovyan
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./notebooks:/home/jovyan
+    networks:
+      - wandb_network
+
+networks:
+  wandb_network:
+    external: true
