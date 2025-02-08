@@ -1,0 +1,17 @@
+services:
+  wandb_hackathon:
+    build: .
+    container_name: wandb_hackathon
+    # command: /bin/sh -c "sleep infinity" 
+    command: /bin/sh -c "nanodjango run app.py"
+    ports:
+      - 127.0.0.1:8001:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./app:/app
+    networks:
+      - wandb_network
+
+networks:
+  wandb_network:
+    external: true
