@@ -4,6 +4,7 @@ services:
     container_name: wandb_hackathon
     # command: /bin/sh -c "sleep infinity" 
     command: /bin/sh -c "nanodjango run app.py"
+    network_mode: host
     ports:
       - 127.0.0.1:8001:8000
     volumes:
